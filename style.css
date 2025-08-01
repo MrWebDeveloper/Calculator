@@ -1,0 +1,260 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+main {
+    height: 90%;
+    width: 50%;
+    border: 10px solid var(--main-border);
+    display: block;
+}
+:root{
+    --main-border: grey;
+    --btn-border: black;
+    --btn-clr: whitesmoke;
+    --btn-hov1: lightgray;
+    --btn-hov2: skyblue;
+    --num-clr: black;
+    --num-hov: black;
+    --sign-clr: black;
+    --sign-hov: black;
+    --display: rgba(0, 0, 255, 0.151);
+    --text-shadow: none;
+    --box-shadow: none;
+}
+#display {
+    background-color: var(--display);
+    border: 5px inset var(--main-border);
+    height: 34%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+}
+#calculator {
+    height: auto;
+    font-size: 2.2em;
+    margin: 15px 0 0 10px;
+    
+}
+#result {
+    height: auto;
+    color: gray;
+    font-size: 2em;
+    margin: 0 0 0 10px;
+}
+#options {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+}
+#options button {
+    border: none;
+    border-left: 1px solid black;
+    background-color: rgba(128, 0, 128, 0.1);
+    font-size: 1.4em;
+}
+#history {
+    align-self: end;
+}
+@media (hover: hover){ /* for Desktop */
+    #options button:hover {
+        color: white;
+        background-color: var(--main-border);
+}
+}
+#options button:active { /* for Mobiles and Tablets */
+    color: white;
+    background-color: var(--main-border);
+}
+#buttons {
+    height: 65%;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: 1fr 4fr;
+}
+#up {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    display: flex;
+
+}
+#up button {
+    width: 25%;
+    color: var(--sign-clr);
+}
+#right {
+    grid-column: 2/3;
+    grid-row: 1/-1;
+    display: flex;
+    flex-direction: column;
+}
+#right button {
+    height: 20%;
+    color: var(--sign-clr);
+}
+#center {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+}
+#center button {
+    width: 33.333%;
+    height: 25%;
+    color: var(--num-clr);
+}
+@media (hover: hover){ /* for Desktop */
+    #up button:hover {
+    background-color: var(--btn-hov1);
+    color: var(--num-hov);
+    text-shadow: var(--text-shadow);
+    box-shadow: var(--box-shadow);
+    z-index: 2;
+    }
+    #right button:hover {
+        background-color: var(--btn-hov2);
+        color: var(--sign-hov);
+        text-shadow: var(--text-shadow);
+        box-shadow: var(--box-shadow);
+        z-index: 2;
+    }
+    #center button:hover {
+        background-color: var(--btn-hov1);
+        color: var(--num-hov);
+        text-shadow: var(--text-shadow);
+        box-shadow: var(--box-shadow);
+        z-index: 2;
+    }
+}
+#up button:active { /* for Mobiles and Tablets */
+    background-color: var(--btn-hov1);
+    color: var(--num-hov);
+    text-shadow: var(--text-shadow);
+    box-shadow: var(--box-shadow);
+    z-index: 2;
+}
+#right button:active {
+    background-color: var(--btn-hov2);
+    color: var(--sign-hov);
+    text-shadow: var(--text-shadow);
+    box-shadow: var(--box-shadow);
+    z-index: 2;
+}
+#center button:active {
+    background-color: var(--btn-hov1);
+    color: var(--num-hov);
+    text-shadow: var(--text-shadow);
+    box-shadow: var(--box-shadow);
+    z-index: 2;
+}
+#up button , #right button , #center button {
+    font-size: 2em;
+    background-color: var(--btn-clr);
+    border: 1px solid var(--btn-border);
+    border-bottom: none;
+    border-right: none;
+}
+.backHid {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 9;
+}
+.hisPage {
+    background-image: linear-gradient(var(--display) , var(--btn-clr));
+    border: 3px solid white;
+    border-radius: 25px;
+    position: fixed;
+    width: 70%;
+    height: 80%;
+    top: 10%;
+    left: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    z-index: 10;
+    overflow: auto;
+}
+.hisDelete {
+    background-color: tomato;
+    width: 50%;
+    font-size: 2em;
+    border-radius: 5px;
+}
+.list {
+    font-size: 3em;
+    color: var(--num-clr);
+    list-style: square;
+    line-height: 1.6em;
+}
+
+
+
+
+
+
+
+
+
+@media only screen and (max-height: 800px){
+        main {
+        width: 75%;
+    }
+}
+@media only screen and (max-height: 550px){
+        main {
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 1033px) and (min-height: 550px){
+    main {
+        width: 75%;
+        height: 95%;
+    }
+}
+@media only screen and (max-width: 920px){
+    main {
+        width: 100%;
+        height: 97%;
+    }
+    .hisDelete {
+    width: 70%;
+    }
+}
+@media only screen and (max-width: 650px){
+    .list {
+        font-size: 2.5em;
+    }
+}
+@media only screen and (max-width: 550px){
+    .list {
+        font-size: 2em;
+    }
+    .hisDelete {
+        font-size: 1.7em;
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 380px){
+    .list {
+        font-size: 1.5em;
+    }
+    #options button {
+        font-size: 1.2em;
+    }
+}
