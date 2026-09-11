@@ -39,70 +39,37 @@ let num2;
 
 
 // Functions
-const themes = {
-    light: ()=>{
-        document.documentElement.style.setProperty("--main-border" , "gray");
-        document.documentElement.style.setProperty("--btn-border" , "black");
-        document.documentElement.style.setProperty("--btn-clr" , "whitesmoke");
-        document.documentElement.style.setProperty("--btn-hov1" , "lightgray");
-        document.documentElement.style.setProperty("--btn-hov2" , "skyblue");
-        document.documentElement.style.setProperty("--num-clr" , "black");
-        document.documentElement.style.setProperty("--num-hov" , "black");
-        document.documentElement.style.setProperty("--sign-clr" , "black");
-        document.documentElement.style.setProperty("--sign-hov" , "black");
-        document.documentElement.style.setProperty("--display" , "rgba(0, 0, 255, 0.151)");
-        document.documentElement.style.setProperty("--text-shadow", "none");
-        document.documentElement.style.setProperty("--box-shadow", "none");
-        localStorage.setItem("online_cal_theme" , "light");
-    },
-    dark: ()=>{
-        document.documentElement.style.setProperty("--main-border" , "black");
-        document.documentElement.style.setProperty("--btn-border" , "black");
-        document.documentElement.style.setProperty("--btn-clr" , "rgb(78, 78, 78)");
-        document.documentElement.style.setProperty("--btn-hov1" , "whitesmoke");
-        document.documentElement.style.setProperty("--btn-hov2" , "blue");
-        document.documentElement.style.setProperty("--num-clr" , "white");
-        document.documentElement.style.setProperty("--num-hov" , "black");
-        document.documentElement.style.setProperty("--sign-clr" , "lightgreen");
-        document.documentElement.style.setProperty("--sign-hov" , "white");
-        document.documentElement.style.setProperty("--display" , "rgba(21, 255, 0, 0.151)");
-        document.documentElement.style.setProperty("--text-shadow", "none");
-        document.documentElement.style.setProperty("--box-shadow", "none");
-        localStorage.setItem("online_cal_theme" , "dark");
-    },
-    neon: ()=>{
-        document.documentElement.style.setProperty("--main-border" , "purple");
-        document.documentElement.style.setProperty("--btn-border" , "rgba(250, 100, 255, 1)");
-        document.documentElement.style.setProperty("--btn-clr" , "black");
-        document.documentElement.style.setProperty("--btn-hov1" , "rgb(221, 25, 228)");
-        document.documentElement.style.setProperty("--btn-hov2" , "greenyellow");
-        document.documentElement.style.setProperty("--num-clr" , "rgba(83, 250, 6, 1)");
-        document.documentElement.style.setProperty("--num-hov" , "skyblue");
-        document.documentElement.style.setProperty("--sign-clr" , "rgba(250, 100, 255, 1)");
-        document.documentElement.style.setProperty("--sign-hov" , "black");
-        document.documentElement.style.setProperty("--display" , "skyblue");
-        document.documentElement.style.setProperty("--text-shadow" , "0px 10px 10px var(--num-hov),0px -10px 10px var(--num-hov), 10px 0px 10px var(--num-hov), -10px 0px 10px var(--num-hov),0px 20px 10px var(--num-hov),0px -20px 10px var(--num-hov), 20px 0px 10px var(--num-hov), -20px 0px 10px var(--num-hov)");
-        document.documentElement.style.setProperty("--box-shadow" , "5px 5px 20px var(--num-hov) inset , -5px -5px 20px var(--num-hov) inset, 10px 10px 20px var(--num-hov), -10px -10px 20px var(--num-hov)");
-        localStorage.setItem("online_cal_theme" , "neon");
-    
-    },
-    loadTheme: ()=>{
-        const theme = localStorage.getItem("online_cal_theme");
-        switch(theme){
-            case "light":
-                themes.light();
-            break;
-            case "dark":
-                themes.dark();
-            break;
-            case "neon":
-                themes.neon();
-            break;
-            default:
-                themes.light();
-        }
+function changeTheme(userChoice){
+    let theme;
+    if(typeof userChoice === "string"){
+        theme = userChoice;
+        localStorage.setItem("online_cal_theme" , userChoice);
+    }else{
+        theme = localStorage.getItem("online_cal_theme") || "light";
+        console.log("bye")
+    }
+    light.classList.remove("selected");
+    dark.classList.remove("selected");
+    neon.classList.remove("selected");
+    switch(theme){
+        case "light":
+            document.documentElement.className = "light";
+            light.className = "selected";
+            localStorage.setItem("online_cal_theme" , "light");
+        break;
+        case "dark":
+            document.documentElement.className = "dark";
+            dark.className = "selected";
+            localStorage.setItem("online_cal_theme" , "dark");
+        break;
+        case "neon":
+            document.documentElement.className = "neon";
+            neon.className = "selected";
+            localStorage.setItem("online_cal_theme" , "neon");
+        break;
     }
 }
+
 
 function typing(e){
     if(e !== "just show!"){
@@ -319,9 +286,9 @@ const ls = {
 
 
 // Events
-light.addEventListener("click" , themes.light);
-dark.addEventListener("click" , themes.dark);
-neon.addEventListener("click" , themes.neon);
+light.addEventListener("click" , ()=> changeTheme("light"));
+dark.addEventListener("click" , ()=> changeTheme("dark"));
+neon.addEventListener("click" , ()=> changeTheme("neon"));
 his.addEventListener("click" , ls.showHistory);
 
 sign_num.addEventListener("click" , posAndNeg);
@@ -348,4 +315,4 @@ clear.addEventListener("click" , remove);
 del.addEventListener("click" , remove);
 equal.addEventListener("click" , equal_is);
 
-document.addEventListener("DOMContentLoaded" , themes.loadTheme);
+document.addEventListener("DOMContentLoaded" , changeTheme);
