@@ -17,14 +17,16 @@ body {
     background-color: white;
 }
 main {
-    height: 90%;
+    height: 100%;
     width: 50%;
     border: 10px solid var(--main-border);
+    box-sizing: border-box;
     display: block;
 }
 :root.light {
     --main-border: grey;
     --btn-border: black;
+    --options-bg: rgba(211, 211, 211, 0.438);
     --btn-clr: whitesmoke;
     --btn-hov1: lightgray;
     --btn-hov2: skyblue;
@@ -39,6 +41,7 @@ main {
 :root.dark {
     --main-border: black;
     --btn-border: black;
+    --options-bg: rgba(255, 255, 255, 0.781);
     --btn-clr: rgb(78, 78, 78);
     --btn-hov1: whitesmoke;
     --btn-hov2: blue;
@@ -53,6 +56,7 @@ main {
 :root.neon {
     --main-border: purple;
     --btn-border: rgba(250, 100, 255, 1);
+    --options-bg: rgba(185, 94, 245, 0.822);
     --btn-clr: black;
     --btn-hov1: rgb(221, 25, 228);
     --btn-hov2: greenyellow;
@@ -67,11 +71,12 @@ main {
 #display {
     background-color: var(--display);
     border: 5px inset var(--main-border);
-    height: 34%;
+    height: 27%;
     display: flex;
     flex-direction: column;
     gap: 0;
-    position: relative;
+    overflow-wrap: anywhere;
+    overflow: auto;
 }
 #calculator {
     height: auto;
@@ -85,25 +90,7 @@ main {
     font-size: 2em;
     margin: 0 0 0 10px;
 }
-#options {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    bottom: 0;
-}
-#options button {
-    border: none;
-    background-color: rgba(128, 0, 128, 0.1);
-    font-size: 1.4em;
-}
-#options button.selected {
-    color: white;
-    background-color: var(--main-border);
-}
-#history {
-    align-self: end;
-}
+
 @media (hover: hover){ /* for Desktop */
     #options button:hover {
         color: white;
@@ -115,14 +102,41 @@ main {
     background-color: var(--main-border);
 }
 #buttons {
-    height: 65%;
+    height: 72%;
     display: grid;
     grid-template-columns: 4fr 1fr;
-    grid-template-rows: 1fr 4fr;
+    grid-template-rows: auto 1fr 4fr;
+}
+#options {
+    width: 100%;
+    height: fit-content;
+    padding: 2px 0px;
+    background-color: var(--main-border);
+    display: flex;
+    justify-content: space-between;
+    grid-column: 1/-1;
+    grid-row: 1/2;
+}
+#options div {
+    height: fit-content;
+}
+#options button {
+    border: none;
+    background-color: var(--options-bg);
+    font-size: 1.4em;
+    border-radius:  3px;
+}
+#options button.selected {
+    color: white;
+    border: 1px solid white;
+    background-color: var(--main-border);
+}
+#history {
+    align-self: end;
 }
 #up {
     grid-column: 1/2;
-    grid-row: 1/2;
+    grid-row: 2/3;
     display: flex;
 
 }
@@ -132,7 +146,7 @@ main {
 }
 #right {
     grid-column: 2/3;
-    grid-row: 1/-1;
+    grid-row: 2/-1;
     display: flex;
     flex-direction: column;
 }
@@ -142,7 +156,7 @@ main {
 }
 #center {
     grid-column: 1/2;
-    grid-row: 2/3;
+    grid-row: 3/4;
     display: flex;
     flex-direction: row-reverse;
     flex-wrap: wrap;
@@ -260,13 +274,11 @@ main {
 @media only screen and (max-width: 1033px) and (min-height: 550px){
     main {
         width: 75%;
-        height: 95%;
     }
 }
 @media only screen and (max-width: 920px){
     main {
         width: 100%;
-        height: 97%;
     }
     .hisDelete {
     width: 70%;

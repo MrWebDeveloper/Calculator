@@ -46,7 +46,6 @@ function changeTheme(userChoice){
         localStorage.setItem("online_cal_theme" , userChoice);
     }else{
         theme = localStorage.getItem("online_cal_theme") || "light";
-        console.log("bye")
     }
     light.classList.remove("selected");
     dark.classList.remove("selected");
