@@ -1,4 +1,4 @@
-### <a id="english"></a>[فارسی](#parsi)
+### <a id="english"></a>[فارسی 🌐](#parsi)
 # Online Calculator
 **A simple and responsive calculator powered by JavaScript.**
 
@@ -31,7 +31,7 @@
 - Telegram: https://t.me/amir_deve
 
 ---
-### <a id="parsi"></a>[English](#english)
+### <a id="parsi"></a>[English 🌐](#english)
 # ماشین‌حساب آنلاین
 **یک ماشین‌حساب ساده و واکنش‌گرا که با جاوااسکریپت ساخته شده.**
 
@@ -51,7 +51,7 @@
 - Local Storage
 
 ## دمو
-# <a href="https://mrwebdeveloper.github.io/Calculator/">برای مشاهده نسخه زنده کلیک کنید</a>
+# <a href="https://mrwebdeveloper.github.io/Calculator/">برای مشاهده نسخه آنلاین کلیک کنید</a>
 <div style="display:flex" align="center">
 <img src="https://github.com/user-attachments/assets/b2fa89cf-2069-441d-8342-4c3d2394200b" style="width:24%"/>
 <img src="https://github.com/user-attachments/assets/14f62051-0fa8-49c5-8110-7c44adb3df77" style="width:24%"/>
