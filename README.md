@@ -59,6 +59,6 @@
 <img src="https://github.com/user-attachments/assets/969ea135-7169-4cfc-8e8e-fe18e5eabe06" style="width:24%"/>
 </div>
 
-## تماس با من
+## ارتباط با من:
 - ایمیل: amirhosseinwebdeveloper@gmail.com
 - تلگرام: https://t.me/amir_deve
